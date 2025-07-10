@@ -38,4 +38,15 @@ public class EffectManager : MonoBehaviour
             activeEffects.Remove(effect);
         }
     }
+
+    public bool TryRemoveEffect(DrugEffect effect, int cost)
+    {
+        if (activeEffects.Contains(effect) && Player.Instance.money >= cost) 
+        {
+            Player.Instance.money -= cost;
+            RemoveEffect(effect);
+            return true;
+        }
+        return false;
+    }
 }
