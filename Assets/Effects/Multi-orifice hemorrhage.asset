@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2fbdec1c1b2a7049958778d6f3b7f88, type: 3}
   m_Name: Multi-orifice hemorrhage
   m_EditorClassIdentifier: 
-  effectName: Multi-Orifice Hemorrhage
+  effectName: Hemorrhaging
   effectDamage: 9
   effectMinValue: 80
   effectMaxValue: 100

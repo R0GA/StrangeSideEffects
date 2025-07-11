@@ -21,6 +21,12 @@ public class BackgroundSwitch : MonoBehaviour
     public Texture apartmentFile;
 
 
+    [Header("Panels")]
+    [Space(5)]
+    public GameObject pharmacyPanel;
+    public GameObject trialsPanel;
+    public GameObject apartmentPanel;
+
     public RawImage transitionPG;
            
     public float fadeDuration = 2f;     
@@ -71,17 +77,29 @@ public class BackgroundSwitch : MonoBehaviour
         {
             backgroundImage.texture = apartmentTexture;
             medicalFileImage.texture = apartmentFile;
+            apartmentPanel.gameObject.SetActive(true);
+
+            pharmacyPanel.gameObject.SetActive(false);
+            trialsPanel.gameObject.SetActive(false);
         }
         else if (scene == 1)
         {
             backgroundImage.texture = trialTexture;
             medicalFileImage.texture = trialFile;
+            trialsPanel.gameObject.SetActive(true);
+
+            pharmacyPanel.gameObject.SetActive(false);
+            apartmentPanel.gameObject.SetActive(false);
         }
 
         else if (scene == 2)
         {
             backgroundImage.texture = pharmacyTexture;
             medicalFileImage.texture = pharmacyFile;
+            pharmacyPanel.gameObject.SetActive(true);
+
+            trialsPanel.gameObject.SetActive(false);
+            apartmentPanel.gameObject.SetActive(false);
         }
 
         yield return StartCoroutine(FadeToAlpha(0f));
