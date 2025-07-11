@@ -6,10 +6,19 @@ using UnityEngine.UIElements;
 public class BackgroundSwitch : MonoBehaviour
 {
    public RawImage backgroundImage;
-  
+   public RawImage medicalFileImage;
+
+    [Header("Bakcground Images")]
+    [Space(5)]
     public Texture apartmentTexture;
     public Texture trialTexture;
     public Texture pharmacyTexture;
+
+    [Header("MedicalFile Images")]
+    [Space(5)]
+    public Texture pharmacyFile;
+    public Texture trialFile;
+    public Texture apartmentFile;
 
 
     public RawImage transitionPG;
@@ -18,6 +27,7 @@ public class BackgroundSwitch : MonoBehaviour
     public float waitBeforeFadeOut = 1f;
 
     private int scene;
+   
 
     public void ApartmentBKND()
     {
@@ -49,20 +59,30 @@ public class BackgroundSwitch : MonoBehaviour
 
     private IEnumerator FadeInOutCoroutine()
     {
-        
+
 
         transitionPG.gameObject.SetActive(true);
-        
+
         yield return StartCoroutine(FadeToAlpha(1f));
 
-       
+
         yield return new WaitForSeconds(waitBeforeFadeOut);
         if (scene == 0)
+        {
             backgroundImage.texture = apartmentTexture;
+            medicalFileImage.texture = apartmentFile;
+        }
         else if (scene == 1)
+        {
             backgroundImage.texture = trialTexture;
+            medicalFileImage.texture = trialFile;
+        }
+
         else if (scene == 2)
+        {
             backgroundImage.texture = pharmacyTexture;
+            medicalFileImage.texture = pharmacyFile;
+        }
 
         yield return StartCoroutine(FadeToAlpha(0f));
         transitionPG.gameObject.SetActive(false);

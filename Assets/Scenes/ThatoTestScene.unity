@@ -259,9 +259,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 819132811}
+  medicalFileImage: {fileID: 1252357445}
   apartmentTexture: {fileID: 2800000, guid: 0c62940308cb5c64bab9239b32040c31, type: 3}
   trialTexture: {fileID: 2800000, guid: 970d5f15aa32a8b47b111c7431997194, type: 3}
   pharmacyTexture: {fileID: 2800000, guid: 970d5f15aa32a8b47b111c7431997194, type: 3}
+  pharmacyFile: {fileID: 2800000, guid: 8b8f3fe42b079714a81a1ac8b933ad5b, type: 3}
+  trialFile: {fileID: 2800000, guid: 9b60eb8406c5e4b469d250810912997b, type: 3}
+  apartmentFile: {fileID: 2800000, guid: 962f9c7577fdd87489ecc48c2bb3a284, type: 3}
   transitionPG: {fileID: 1117439512}
   fadeDuration: 2
   waitBeforeFadeOut: 1
@@ -285,7 +289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 0c62940308cb5c64bab9239b32040c31, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -311,7 +315,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1252357444}
   m_Father: {fileID: 138067026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -370,9 +375,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1117439512}
+  medicalFileImage: {fileID: 0}
   apartmentTexture: {fileID: 2800000, guid: 0c62940308cb5c64bab9239b32040c31, type: 3}
   trialTexture: {fileID: 2800000, guid: 970d5f15aa32a8b47b111c7431997194, type: 3}
   pharmacyTexture: {fileID: 2800000, guid: 970d5f15aa32a8b47b111c7431997194, type: 3}
+  pharmacyFile: {fileID: 0}
+  trialFile: {fileID: 0}
+  apartmentFile: {fileID: 0}
   transitionPG: {fileID: 0}
   fadeDuration: 2
   waitBeforeFadeOut: 1
@@ -410,6 +419,78 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117439509}
+  m_CullTransparentMesh: 1
+--- !u!1 &1252357443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252357444}
+  - component: {fileID: 1252357446}
+  - component: {fileID: 1252357445}
+  m_Layer: 5
+  m_Name: medical file
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1252357444
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252357443}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.7182, y: 2.7182, z: 2.7182}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819132813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 494.99756, y: -181.99872}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1252357445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252357443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 8b8f3fe42b079714a81a1ac8b933ad5b, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1252357446
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252357443}
   m_CullTransparentMesh: 1
 --- !u!1 &1256356345
 GameObject:
