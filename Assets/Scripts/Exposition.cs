@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Exposition : MonoBehaviour
 {
+    public Animator animator;
+
     public RawImage backgroundImage;
     public RawImage medicalFileImage;
 
@@ -46,6 +49,7 @@ public class Exposition : MonoBehaviour
     {
         scene = 0;
         StartCoroutine(FadeInOutCoroutine());
+        animator.SetTrigger("Open");
     }
 
     public void ToPharmcy()
@@ -62,6 +66,14 @@ public class Exposition : MonoBehaviour
         StartCoroutine(FadeInOutCoroutine());
     }
 
+
+    public void LetsPlay()
+
+    {
+        scene = 3;
+        StartCoroutine(FadeInOutCoroutine());
+        StartCoroutine(NextScene());
+    }
 
 
     private IEnumerator FadeInOutCoroutine()
@@ -102,6 +114,7 @@ public class Exposition : MonoBehaviour
             pharmacyPanel.gameObject.SetActive(false);
             apartmentPanel.gameObject.SetActive(false);
 
+            nextButton3.gameObject.SetActive(false);
             nextButton1.gameObject.SetActive(false);
             nextButton2.gameObject.SetActive(true);
         }
@@ -142,6 +155,13 @@ public class Exposition : MonoBehaviour
         }
 
         transitionPG.color = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+    }
+
+    private IEnumerator NextScene()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainGameScene");
+
     }
 
 }
