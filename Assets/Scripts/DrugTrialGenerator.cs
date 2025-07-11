@@ -63,10 +63,8 @@ public class DrugTrialGenerator : MonoBehaviour
     {
         int baseReward = 0; // Base payment for participation
 
-        // Higher reward for riskier side effects
         foreach (DrugEffect sideEffect in trial.potentialSideEffects)
         {
-            // More dangerous effects increase reward more
             baseReward += Random.Range(sideEffect.effectMinValue, sideEffect.effectMaxValue + 1);
         }
 
@@ -76,27 +74,33 @@ public class DrugTrialGenerator : MonoBehaviour
     // Call this when player completes a trial
     public void CompleteTrial(DrugTrial trial)
     {
-        // 1. Cure all promised effects
-        foreach (DrugEffect cure in trial.effectsToCure)
+        if (!GameManager.Instance.hasDoneTrial)
         {
-            EffectManager.Instance.RemoveEffect(cure);
-        }
-
-        // 2. Apply side effects ONLY if RNG passes their individual chance
-        foreach (DrugEffect sideEffect in trial.potentialSideEffects)
-        {
-            if (Random.Range(0, 100) < sideEffect.effectChance)
+            // 1. Cure all promised effects
+            foreach (DrugEffect cure in trial.effectsToCure)
             {
-                EffectManager.Instance.AddEffect(sideEffect);
+                EffectManager.Instance.RemoveEffect(cure);
             }
+
+            // 2. Apply side effects ONLY if RNG passes their individual chance
+            foreach (DrugEffect sideEffect in trial.potentialSideEffects)
+            {
+                if (Random.Range(0, 100) < sideEffect.effectChance)
+                {
+                    EffectManager.Instance.AddEffect(sideEffect);
+                }
+            }
+
+            // 3. Give reward
+            Player.Instance.money += trial.reward;
+            Debug.Log($"Completed trial! Gained ${trial.reward}");
+
+            // 4. Stop Further Trials
+            GameManager.Instance.hasDoneTrial = true;
+
+            //4. Refresh available trials
+            //GenerateNewTrials();
         }
-
-        // 3. Give reward
-        Player.Instance.money += trial.reward;
-        Debug.Log($"Completed trial! Gained ${trial.reward}");
-
-        // 4. Refresh available trials
-        GenerateNewTrials();
     }
 }
 

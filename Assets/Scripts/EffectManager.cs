@@ -7,7 +7,7 @@ public class EffectManager : MonoBehaviour
     public static EffectManager Instance { get; private set; }
 
     [SerializeField] 
-    private List<DrugEffect> activeEffects = new List<DrugEffect>();
+    public List<DrugEffect> activeEffects = new List<DrugEffect>();
 
     private void Awake()
     {
