@@ -6,53 +6,91 @@ using UnityEngine.UIElements;
 public class BackgroundSwitch : MonoBehaviour
 {
    public RawImage backgroundImage;
-  
+   public RawImage medicalFileImage;
+
+    [Header("Bakcground Images")]
+    [Space(5)]
     public Texture apartmentTexture;
     public Texture trialTexture;
     public Texture pharmacyTexture;
+
+    [Header("MedicalFile Images")]
+    [Space(5)]
+    public Texture pharmacyFile;
+    public Texture trialFile;
+    public Texture apartmentFile;
 
 
     public RawImage transitionPG;
            
     public float fadeDuration = 2f;     
-    public float waitBeforeFadeOut = 1f; 
+    public float waitBeforeFadeOut = 1f;
 
+    private int scene;
+   
 
     public void ApartmentBKND()
     {
-        backgroundImage.texture = apartmentTexture;
+        scene = 0;
         StartCoroutine(FadeInOutCoroutine());
 
+       // backgroundImage.texture = apartmentTexture;
+       
     }
 
 
     public void TrialBKND()
     {
-        backgroundImage.texture = trialTexture;
+        scene = 1;
+        // backgroundImage.texture = trialTexture;
+        StartCoroutine(FadeInOutCoroutine());
 
     }
 
 
     public void PharmacyBKND()
     {
-        backgroundImage.texture = pharmacyTexture;
+        scene = 2;
+        // backgroundImage.texture = pharmacyTexture;
+        StartCoroutine(FadeInOutCoroutine());
 
     }
 
 
     private IEnumerator FadeInOutCoroutine()
     {
-        
+
+
+        transitionPG.gameObject.SetActive(true);
+
         yield return StartCoroutine(FadeToAlpha(1f));
 
-       
-        yield return new WaitForSeconds(waitBeforeFadeOut);
 
-       
+        yield return new WaitForSeconds(waitBeforeFadeOut);
+        if (scene == 0)
+        {
+            backgroundImage.texture = apartmentTexture;
+            medicalFileImage.texture = apartmentFile;
+        }
+        else if (scene == 1)
+        {
+            backgroundImage.texture = trialTexture;
+            medicalFileImage.texture = trialFile;
+        }
+
+        else if (scene == 2)
+        {
+            backgroundImage.texture = pharmacyTexture;
+            medicalFileImage.texture = pharmacyFile;
+        }
+
         yield return StartCoroutine(FadeToAlpha(0f));
+        transitionPG.gameObject.SetActive(false);
+       
     }
 
     private IEnumerator FadeToAlpha(float targetAlpha)
+
     {
         Color startColor = transitionPG.color;
         float startAlpha = startColor.a;
