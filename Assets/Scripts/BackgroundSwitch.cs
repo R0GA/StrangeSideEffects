@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 public class BackgroundSwitch : MonoBehaviour
 {
+
+    public AudioSource walking;
    
 
    public RawImage backgroundImage;
@@ -42,9 +44,9 @@ public class BackgroundSwitch : MonoBehaviour
     {
         scene = 0;
         StartCoroutine(FadeInOutCoroutine());
+        walking.Play();
+        // backgroundImage.texture = apartmentTexture;
 
-       // backgroundImage.texture = apartmentTexture;
-       
     }
 
 
@@ -53,6 +55,7 @@ public class BackgroundSwitch : MonoBehaviour
         scene = 1;
         // backgroundImage.texture = trialTexture;
         StartCoroutine(FadeInOutCoroutine());
+        walking.Play();
 
     }
 
@@ -62,7 +65,7 @@ public class BackgroundSwitch : MonoBehaviour
         scene = 2;
         // backgroundImage.texture = pharmacyTexture;
         StartCoroutine(FadeInOutCoroutine());
-
+        walking.Play();
     }
 
 

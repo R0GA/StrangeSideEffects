@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Exposition : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource audioSource;
 
     public RawImage backgroundImage;
     public RawImage medicalFileImage;
@@ -50,6 +51,7 @@ public class Exposition : MonoBehaviour
         scene = 0;
         StartCoroutine(FadeInOutCoroutine());
         animator.SetTrigger("Open");
+        audioSource.Play();
     }
 
     public void ToPharmcy()
