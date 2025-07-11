@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
 public class GameManager : MonoBehaviour
 {
     public int dayCount;
-    public bool hasDoneTrial;
+    public bool hasDoneTrial = true;
     public DrugTrialGenerator drugTrialGenerator;
     public PlayerHealthBar healthBar;
+    public TMP_Text dayText;
 
     public static GameManager Instance { get; private set; }
 
@@ -32,13 +34,21 @@ public class GameManager : MonoBehaviour
 
     public void EndDay()
     {
-        dayCount++;
-        hasDoneTrial = false;
-        foreach (DrugEffect sideEffect in EffectManager.Instance.activeEffects)
+        if (hasDoneTrial)
         {
-            healthBar.currentHealth -= sideEffect.effectDamage;
-        }
-        drugTrialGenerator.GenerateNewTrials();
+            dayCount++;
+            hasDoneTrial = false;
+            foreach (DrugEffect sideEffect in EffectManager.Instance.activeEffects)
+            {
+                healthBar.currentHealth -= sideEffect.effectDamage;
+            }
+            if(EffectManager.Instance.activeEffects.Count <= 0)
+            {
+                healthBar.currentHealth += 10;
+            }
+            drugTrialGenerator.GenerateNewTrials();
+            dayText.text = dayCount.ToString();
+        }  
     }
 
 }

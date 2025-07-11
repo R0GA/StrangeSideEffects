@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     public float currentHealth;
     public float maxHealth = 100;
+    public TMP_Text healthText;
    
    // public GameObject player;
 
@@ -38,5 +40,6 @@ public class PlayerHealthBar : MonoBehaviour
     {
         float targetFillAmount = currentHealth / maxHealth;
         healthFill.fillAmount = targetFillAmount;
+        healthText.text = currentHealth.ToString();
     }
 }
