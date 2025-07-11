@@ -98,6 +98,9 @@ public class DrugTrialGenerator : MonoBehaviour
             // 4. Stop Further Trials
             GameManager.Instance.hasDoneTrial = true;
 
+            // 5. Update Player UI
+            Player.Instance.UpdateEffectText();
+
             //4. Refresh available trials
             //GenerateNewTrials();
         }

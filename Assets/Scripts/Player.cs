@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("UI")]
+    public TMP_Text moneyText;
+    public TMP_Text effectsText;
+
     public int health;
     public int money;
+
+
 
     public static Player Instance { get; private set; }
 
@@ -21,4 +29,19 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+      
+    }
+
+    private void Update()
+    {
+        moneyText.text = $"Money: {money}";
+    }
+
+    public void UpdateEffectText()
+    {
+        effectsText.text = $"Current Effects:\n{EffectManager.Instance.CurrentEffects}";
+    } 
+
 }
