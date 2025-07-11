@@ -42,9 +42,10 @@ public class BackgroundSwitch : MonoBehaviour
 
     public void ApartmentBKND()
     {
-        scene = 0;
-        StartCoroutine(FadeInOutCoroutine());
+        scene = 0; 
         walking.Play();
+        StartCoroutine(FadeInOutCoroutine());
+       
         // backgroundImage.texture = apartmentTexture;
 
     }
@@ -53,19 +54,21 @@ public class BackgroundSwitch : MonoBehaviour
     public void TrialBKND()
     {
         scene = 1;
+        walking.Play();
         // backgroundImage.texture = trialTexture;
         StartCoroutine(FadeInOutCoroutine());
-        walking.Play();
+        
 
     }
 
 
     public void PharmacyBKND()
     {
-        scene = 2;
+        scene = 2; 
+        walking.Play();
         // backgroundImage.texture = pharmacyTexture;
         StartCoroutine(FadeInOutCoroutine());
-        walking.Play();
+       
     }
 
 
