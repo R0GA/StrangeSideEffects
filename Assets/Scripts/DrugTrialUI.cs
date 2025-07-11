@@ -11,6 +11,7 @@ public class DrugTrialUI : MonoBehaviour
     public TMP_Text trial1;
     public TMP_Text trial2;
     public TMP_Text trial3;
+    public TMP_Text trial4;
 
     public void StartTrial()
     {
@@ -30,6 +31,10 @@ public class DrugTrialUI : MonoBehaviour
         trial3.text = $"Cures:\n{drugTrialGenerator.currentTrials[2].SideEffectsCured}" +
             $"Potential Side Effects:\n{drugTrialGenerator.currentTrials[2].SideEffectsWarning}" +
             $"Payout: {drugTrialGenerator.currentTrials[2].reward}";
+
+        trial4.text = $"Cures:\n{drugTrialGenerator.currentTrials[3].SideEffectsCured}" +
+            $"Potential Side Effects:\n{drugTrialGenerator.currentTrials[3].SideEffectsWarning}" +
+            $"Payout: {drugTrialGenerator.currentTrials[3].reward}";
     }
 
     public void CompleteTrial1()
@@ -43,6 +48,10 @@ public class DrugTrialUI : MonoBehaviour
     public void CompleteTrial3()
     {
         drugTrialGenerator.CompleteTrial(drugTrialGenerator.currentTrials[2]);
+    }
+    public void CompleteTrial4()
+    {
+        drugTrialGenerator.CompleteTrial(drugTrialGenerator.currentTrials[3]);
     }
 
 }

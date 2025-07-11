@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int dayCount;
     public bool hasDoneTrial;
     public DrugTrialGenerator drugTrialGenerator;
+    public PlayerHealthBar healthBar;
 
     public static GameManager Instance { get; private set; }
 
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
         EndDay();
     }
 
@@ -31,7 +36,7 @@ public class GameManager : MonoBehaviour
         hasDoneTrial = false;
         foreach (DrugEffect sideEffect in EffectManager.Instance.activeEffects)
         {
-            Player.Instance.health -= sideEffect.effectDamage;
+            healthBar.currentHealth -= sideEffect.effectDamage;
         }
         drugTrialGenerator.GenerateNewTrials();
     }

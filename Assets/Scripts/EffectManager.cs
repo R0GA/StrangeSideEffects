@@ -49,4 +49,16 @@ public class EffectManager : MonoBehaviour
         }
         return false;
     }
+    public string CurrentEffects
+    {
+        get
+        {
+            string currentEffects = "";
+            foreach (var effect in activeEffects)
+            {
+                currentEffects += $"{effect.effectName}\n";
+            }
+            return currentEffects;
+        }
+    }
 }
