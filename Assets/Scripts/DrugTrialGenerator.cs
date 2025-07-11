@@ -134,7 +134,7 @@ public class DrugTrial
             string warning = "";
             foreach (var effect in potentialSideEffects)
             {
-                warning += $"{effect.effectName} ({effect.effectChance}% chance)\n";
+                warning += $"{effect.effectName} ({effect.effectChance}%)\n";
             }
             return warning;
         }
