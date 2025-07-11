@@ -15,27 +15,34 @@ public class BackgroundSwitch : MonoBehaviour
     public RawImage transitionPG;
            
     public float fadeDuration = 2f;     
-    public float waitBeforeFadeOut = 1f; 
+    public float waitBeforeFadeOut = 1f;
 
+    private int scene;
 
     public void ApartmentBKND()
     {
-        backgroundImage.texture = apartmentTexture;
+        scene = 0;
         StartCoroutine(FadeInOutCoroutine());
 
+       // backgroundImage.texture = apartmentTexture;
+       
     }
 
 
     public void TrialBKND()
     {
-        backgroundImage.texture = trialTexture;
+        scene = 1;
+        // backgroundImage.texture = trialTexture;
+        StartCoroutine(FadeInOutCoroutine());
 
     }
 
 
     public void PharmacyBKND()
     {
-        backgroundImage.texture = pharmacyTexture;
+        scene = 2;
+        // backgroundImage.texture = pharmacyTexture;
+        StartCoroutine(FadeInOutCoroutine());
 
     }
 
@@ -43,16 +50,27 @@ public class BackgroundSwitch : MonoBehaviour
     private IEnumerator FadeInOutCoroutine()
     {
         
+
+        transitionPG.gameObject.SetActive(true);
+        
         yield return StartCoroutine(FadeToAlpha(1f));
 
        
         yield return new WaitForSeconds(waitBeforeFadeOut);
+        if (scene == 0)
+            backgroundImage.texture = apartmentTexture;
+        else if (scene == 1)
+            backgroundImage.texture = trialTexture;
+        else if (scene == 2)
+            backgroundImage.texture = pharmacyTexture;
 
-       
         yield return StartCoroutine(FadeToAlpha(0f));
+        transitionPG.gameObject.SetActive(false);
+       
     }
 
     private IEnumerator FadeToAlpha(float targetAlpha)
+
     {
         Color startColor = transitionPG.color;
         float startAlpha = startColor.a;

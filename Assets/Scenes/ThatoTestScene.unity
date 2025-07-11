@@ -216,10 +216,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1117439510}
   - {fileID: 819132813}
   - {fileID: 1984729206}
   - {fileID: 1256356346}
+  - {fileID: 1117439510}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -337,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1117439510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 1256356348}
   - component: {fileID: 1256356347}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: trial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 1984729208}
   - component: {fileID: 1984729207}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Apartment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
