@@ -1084,7 +1084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 535.1792, y: 304.33215}
+  m_AnchoredPosition: {x: 167, y: 304.33215}
   m_SizeDelta: {x: 169.8507, y: 29.5895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230290985
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0039215684, g: 1, b: 0.9670508, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4578,8 +4578,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.2127, y: -3.3881}
-  m_SizeDelta: {x: 1928.4, y: 1073.2}
+  m_AnchoredPosition: {x: 4.2127, y: 0.0059431}
+  m_SizeDelta: {x: 1928.4, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830441775
 MonoBehaviour:
@@ -4601,7 +4601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 970d5f15aa32a8b47b111c7431997194, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0c62940308cb5c64bab9239b32040c31, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4804,7 +4804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347.16016, y: 304.33}
+  m_AnchoredPosition: {x: 524, y: 304.33}
   m_SizeDelta: {x: 170.6048, y: 29.588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904156829
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Shop
+  m_text: 'Pharmacy
 
 '
   m_isRightToLeft: 0
@@ -9136,7 +9136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 162, y: 304.33}
+  m_AnchoredPosition: {x: 342, y: 304.33}
   m_SizeDelta: {x: 160, y: 29.586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590295228
