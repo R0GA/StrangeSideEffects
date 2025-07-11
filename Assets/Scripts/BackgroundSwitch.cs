@@ -5,12 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 public class BackgroundSwitch : MonoBehaviour
 {
+   
+
    public RawImage backgroundImage;
    public RawImage medicalFileImage;
 
     [Header("Bakcground Images")]
     [Space(5)]
     public Texture apartmentTexture;
+    public Texture homelessTexture;
     public Texture trialTexture;
     public Texture pharmacyTexture;
 
@@ -71,11 +74,17 @@ public class BackgroundSwitch : MonoBehaviour
 
         yield return StartCoroutine(FadeToAlpha(1f));
 
+        
+
 
         yield return new WaitForSeconds(waitBeforeFadeOut);
         if (scene == 0)
         {
-            backgroundImage.texture = apartmentTexture;
+            if (GameManager.Instance.homeless)
+                backgroundImage.texture = homelessTexture;
+            else if(!GameManager.Instance.homeless)
+                backgroundImage.texture = apartmentTexture;
+
             medicalFileImage.texture = apartmentFile;
             apartmentPanel.gameObject.SetActive(true);
 
