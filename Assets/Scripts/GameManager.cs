@@ -23,7 +23,11 @@ public class GameManager : MonoBehaviour
     public Texture playerSick;
     public Texture playerVerySick;
     public RawImage playerImage;
-    
+    public RawImage transitionPG;
+    public float fadeDuration;
+    public float waitBeforeFadeOut;
+
+
 
     public static GameManager Instance { get; private set; }
 
@@ -78,11 +82,37 @@ public class GameManager : MonoBehaviour
             }
            else if (healthBar.currentHealth <= 0)
             {
-                SceneManager.LoadScene("DeathScene");
+                StartCoroutine(SceneSwitch());
             }
         }  
     }
-    
+
+    private IEnumerator SceneSwitch()
+    {
+        transitionPG.gameObject.SetActive(true);
+        yield return StartCoroutine(FadeToAlpha(1f));
+        yield return new WaitForSeconds(waitBeforeFadeOut);
+        SceneManager.LoadScene("DeathScene");
+    }
+
+    private IEnumerator FadeToAlpha(float targetAlpha)
+
+    {
+        Color startColor = transitionPG.color;
+        float startAlpha = startColor.a;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < fadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, timeElapsed / fadeDuration);
+            transitionPG.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
+            yield return null;
+        }
+
+        transitionPG.color = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+    }
+
     public void PayRent()
     {
         if (!homeless)
