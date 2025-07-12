@@ -186,7 +186,7 @@ public class Exposition : MonoBehaviour
 
 
 
-    #region
+    #region TYPING
     public void TypeNextText()
     {
         if (typingCoroutine != null)
