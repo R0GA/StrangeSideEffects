@@ -8,7 +8,8 @@ using TMPro;
 public class Exposition : MonoBehaviour
 {
     public Animator animator;
-    public AudioSource audioSource;
+    public AudioSource LidFlip;
+    public AudioSource themeMusic;
 
     public RawImage backgroundImage;
     public RawImage medicalFileImage;
@@ -65,7 +66,7 @@ public class Exposition : MonoBehaviour
         scene = 0;
         StartCoroutine(FadeInOutCoroutine());
         animator.SetTrigger("Open");
-        audioSource.Play();
+        LidFlip.Play();
     }
 
     public void ToPharmcy()
@@ -135,6 +136,7 @@ public class Exposition : MonoBehaviour
             nextButton3.gameObject.SetActive(false);
             nextButton1.gameObject.SetActive(false);
             nextButton2.gameObject.SetActive(true);
+            TypeNextText();
         }
 
         else if (scene == 1)
