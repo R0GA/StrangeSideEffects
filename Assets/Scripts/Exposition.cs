@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Exposition : MonoBehaviour
 {
@@ -45,6 +46,19 @@ public class Exposition : MonoBehaviour
     public GameObject apartmentPanel;
 
     private int scene;
+
+    [Header("Typing")]
+    [Space(5)]
+    public TextMeshProUGUI nurseDialogue;
+
+    public float letterDelay = 0.05f;  
+    public string[] messages;          
+    private int currentMessageIndex = 0;
+    private Coroutine typingCoroutine;
+
+
+
+
     public void LetsGetIt()
 
     {
@@ -106,6 +120,8 @@ public class Exposition : MonoBehaviour
 
             medicalFileImage.gameObject.SetActive(true);
 
+            TypeNextText();
+
         }
         else if (scene == 2)
         {
@@ -133,6 +149,7 @@ public class Exposition : MonoBehaviour
             nextButton1 .gameObject.SetActive(false);
             nextButton2.gameObject.SetActive(false);
             nextButton3.gameObject.SetActive(true);
+            TypeNextText ();
         }
 
         yield return StartCoroutine(FadeToAlpha(0f));
@@ -165,5 +182,36 @@ public class Exposition : MonoBehaviour
         SceneManager.LoadScene("MainGameScene");
 
     }
+
+
+
+
+    #region
+    public void TypeNextText()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        if (messages.Length == 0)
+            return;
+
+        string message = messages[currentMessageIndex];
+        typingCoroutine = StartCoroutine(TypeText(message));
+
+        // Cycle to next message
+        currentMessageIndex = (currentMessageIndex + 1) % messages.Length;
+    }
+
+    IEnumerator TypeText(string message)
+    {
+        nurseDialogue.text = "";
+        foreach (char c in message)
+        {
+            nurseDialogue.text += c;
+            yield return new WaitForSeconds(letterDelay);
+        }
+    }
+
+    #endregion
 
 }
