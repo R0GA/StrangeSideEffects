@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Optional: Only if player persists across scenes
+           
         }
         else
         {

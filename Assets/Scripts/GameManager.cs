@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.ParticleSystem;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
     public PlayerHealthBar healthBar;
     public TMP_Text dayText;
     public TMP_Text rentText;
+    public Texture playerHealthy;
+    public Texture playerSick;
+    public Texture playerVerySick;
+    public RawImage playerImage;
     
 
     public static GameManager Instance { get; private set; }
@@ -26,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+           
         }
         else
         {
@@ -47,8 +52,6 @@ public class GameManager : MonoBehaviour
     {
         if (hasDoneTrial)
         {
-            dayCount++;
-            hasDoneTrial = false;
             foreach (DrugEffect sideEffect in EffectManager.Instance.activeEffects)
             {
                 healthBar.currentHealth -= sideEffect.effectDamage;
@@ -57,9 +60,25 @@ public class GameManager : MonoBehaviour
             {
                 healthBar.currentHealth += 10;
             }
-            drugTrialGenerator.GenerateNewTrials();
-            dayText.text = dayCount.ToString();
-            CheckRent();
+            if(healthBar.currentHealth > 0)
+            {
+                if (healthBar.currentHealth > 66)
+                    playerImage.texture = playerHealthy;
+                else if (healthBar.currentHealth <= 66 && healthBar.currentHealth > 33)
+                    playerImage.texture = playerSick;
+                else if (healthBar.currentHealth <= 33)
+                    playerImage.texture = playerVerySick;
+                
+                dayCount++;
+                hasDoneTrial = false;
+                drugTrialGenerator.GenerateNewTrials();
+                dayText.text = dayCount.ToString();
+                CheckRent();
+            }
+           else if (healthBar.currentHealth <= 0)
+            {
+
+            }
         }  
     }
     
